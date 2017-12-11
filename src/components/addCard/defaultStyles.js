@@ -82,12 +82,12 @@ export default {
     ...textInput,
   },
   errorTextContainer: {
-    height: 71,
+    height: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
   errorText: {
-    fontSize: 16,
+    fontSize: 14,
     color: 'red',
     textAlign: 'center',
   },

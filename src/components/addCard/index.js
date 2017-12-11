@@ -241,7 +241,9 @@ export default class AddCard extends Component {
           </View>
         </View>
         <View style={styles.errorTextContainer}>
-          <Text style={styles.errorText}>{calculatedState.error}</Text>
+          <Text numberOfLines={2} style={styles.errorText}>
+            {calculatedState.error}
+          </Text>
         </View>
         {this.props.scanCardVisible ? (
           <TouchableOpacity
