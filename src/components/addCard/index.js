@@ -31,6 +31,7 @@ export default class AddCard extends Component {
     scanCardButtonText: PropTypes.string,
     scanCardAfterScanButtonText: PropTypes.string,
     scanCardVisible: PropTypes.bool,
+    addCardVisible: PropTypes.bool,
     addCardButtonText: PropTypes.string,
     placeholderTextColor: PropTypes.string,
     cardNumberPlaceholderText: PropTypes.string,
@@ -48,6 +49,7 @@ export default class AddCard extends Component {
     scanCardAfterScanButtonText: 'Scan Again',
     scanCardButtonText: 'Scan Card',
     scanCardVisible: true,
+    addCardVisible: true,
     placeholderTextColor: 'black',
     cardNumberPlaceholderText: '4242 4242 4242 4242',
     expiryPlaceholderText: 'MM/YY',
@@ -91,7 +93,10 @@ export default class AddCard extends Component {
     })
     const expiryYear = `${card.expiryYear}`
     if (s(card.expiryMonth).length >= 2 && s(expiryYear).length >= 2) {
-      this.setState({ expiry: `${card.expiryMonth}/${expiryYear.slice(-2)}`, expiryDirty: true })
+      this.setState({
+        expiry: `${card.expiryMonth}/${expiryYear.slice(-2)}`,
+        expiryDirty: true,
+      })
       _.delay(() => this.refs.cvcInput.focus(), DELAY_FOCUS)
     } else {
       _.delay(() => this.refs.expiryInput.focus(), DELAY_FOCUS)
@@ -276,23 +281,29 @@ export default class AddCard extends Component {
           </TouchableOpacity>
         ) : null}
 
-        <TouchableOpacity
-          style={styles.addButton}
-          styles={styles}
-          onPress={() => {
-            this.setState({ expiryDirty: true, cardNumberDirty: true, cvcDirty: true })
-            if (this.isCardNumberValid() && this.isExpiryValid() && this.isCvcValid()) {
-              this.setState({ addingCard: true })
-              this.props
-                .addCardHandler(calculatedState.cardNumber, calculatedState.expiry, calculatedState.cvc)
-                .then(() => this.setState({ addingCard: false }))
-                .catch(error => this.setState({ error: error.message, addingCard: false }))
-            }
-          }}
-          last
-        >
-          <Text style={styles.addButtonText}>{this.props.addCardButtonText}</Text>
-        </TouchableOpacity>
+        {this.props.addCardVisible ? (
+          <TouchableOpacity
+            style={styles.addButton}
+            styles={styles}
+            onPress={() => {
+              this.setState({
+                expiryDirty: true,
+                cardNumberDirty: true,
+                cvcDirty: true,
+              })
+              if (this.isCardNumberValid() && this.isExpiryValid() && this.isCvcValid()) {
+                this.setState({ addingCard: true })
+                this.props
+                  .addCardHandler(calculatedState.cardNumber, calculatedState.expiry, calculatedState.cvc)
+                  .then(() => this.setState({ addingCard: false }))
+                  .catch(error => this.setState({ error: error.message, addingCard: false }))
+              }
+            }}
+            last
+          >
+            <Text style={styles.addButtonText}>{this.props.addCardButtonText}</Text>
+          </TouchableOpacity>
+        ) : null}
       </View>
     )
     return (
