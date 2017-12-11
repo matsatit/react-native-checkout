@@ -218,7 +218,7 @@ export default class AddCard extends Component {
               }}
             />
           </View>
-          <View style={styles.cvcContainer} />
+          <View style={styles.lineDateCvc} />
           <View style={[styles.cvcContainer, calculatedState.cvcShowError && styles.invalid]}>
             <Image resizeMode="contain" style={styles.cvcImage} source={cardCvc} />
             <TextInput
