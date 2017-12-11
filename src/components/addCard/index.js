@@ -159,7 +159,7 @@ export default class AddCard extends Component {
       )
     }
     const addCardContents = (
-      <View>
+      <View style={styles.addCardContentsContainer}>
         <View style={[styles.cardNumberContainer, calculatedState.cardNumberShowError && styles.invalid]}>
           <Image resizeMode="contain" style={styles.cardNumberImage} source={cardFront} />
           <TextInput

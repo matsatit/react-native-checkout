@@ -35,6 +35,11 @@ const buttonText = {
 }
 
 export default {
+  addCardContentsContainer: {
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 10,
+  },
   activityIndicator: {},
   activityIndicatorContainer: {
     flex: 1,
