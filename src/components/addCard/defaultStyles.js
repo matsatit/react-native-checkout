@@ -40,6 +40,11 @@ export default {
     borderWidth: 1,
     borderRadius: 10,
   },
+  lineDateCvc: {
+    width: 1,
+    height: '100%',
+    backgroundColor: 'gray',
+  },
   activityIndicator: {},
   activityIndicatorContainer: {
     flex: 1,
