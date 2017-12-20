@@ -83,7 +83,16 @@ export default class AddCard extends Component {
   componentDidMount() {
     this.refs.cardNumberInput.focus()
   }
+  getExpiry = () => {
+    return this.state.expiry
+  }
 
+  getCardNumber = () => {
+    return this.state.cardNumber
+  }
+  getCvc = () => {
+    return this.state.cvc
+  }
   didScanCard(card) {
     this.setState({
       scanningCard: false,
