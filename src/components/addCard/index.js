@@ -4,7 +4,7 @@ import { ActivityIndicator, Platform, View, Image, TextInput, Text } from 'react
 import _ from 'lodash'
 import s from 'string'
 import payment from 'payment'
-import KeyboardSpacer from 'react-native-keyboard-spacer'
+// import KeyboardSpacer from 'react-native-keyboard-spacer'
 import { CardIOModule, CardIOUtilities } from 'react-native-awesome-card-io'
 import defaultStyles from './defaultStyles.js'
 import TouchableOpacity from '../common/touchableOpacity'
@@ -321,7 +321,7 @@ export default class AddCard extends Component {
     return (
       <View style={{ flex: 1 }}>
         <View style={[styles.addCardContainer, this.props.style]}>{addCardContents}</View>
-        {Platform.OS === 'android' ? null : <KeyboardSpacer /> /* Android takes care of this for us. */}
+        {/*Platform.OS === 'android' ? null : <KeyboardSpacer /> /* Android takes care of this for us. */}
       </View>
     )
   }
